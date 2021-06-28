@@ -24,6 +24,8 @@ public class tetrisBlock : MonoBehaviour
     [SerializeField]
     private GameObject[] _childblocks;
 
+    public GameLogic.Player _player;
+
     /// <summary>
     /// This function is called when the object becomes enabled and active.
     /// </summary>
@@ -44,12 +46,27 @@ public class tetrisBlock : MonoBehaviour
 
     private void RotateTetris()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (_player == GameLogic.Player.P1)
         {
-            _rotationPoint.eulerAngles += new Vector3(0, 0, 90);
-            if (!ValidMove())
+            if (Input.GetKeyDown(KeyCode.A))
             {
-                _rotationPoint.eulerAngles -= new Vector3(0, 0, 90);
+                _rotationPoint.eulerAngles += new Vector3(0, 0, 90);
+                if (!ValidMove())
+                {
+                    _rotationPoint.eulerAngles -= new Vector3(0, 0, 90);
+                }
+            }
+        }
+        else
+        if (_player == GameLogic.Player.P2)
+        {
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                _rotationPoint.eulerAngles += new Vector3(0, 0, 90);
+                if (!ValidMove())
+                {
+                    _rotationPoint.eulerAngles -= new Vector3(0, 0, 90);
+                }
             }
         }
     }
@@ -66,45 +83,96 @@ public class tetrisBlock : MonoBehaviour
 
     private void FallTetris()
     {
-        if (Time.time - _previousTime > (Input.GetKey(KeyCode.RightArrow) ? _fallTime / 5 : _fallTime))
+        if (_player == GameLogic.Player.P1) //MOVE RIGHT IF PLAYER 1
         {
-            transform.position += new Vector3(0, -_stepSize, 0); //Move the tetris down
-            if (!ValidMove())
+            if (Time.time - _previousTime > (Input.GetKey(KeyCode.D) ? _fallTime / 5 : _fallTime))
             {
-                transform.position -= new Vector3(0, -_stepSize, 0);
-                RegisterBlock();
-                _spawner.SpawnSingleBlock();
+                transform.position += new Vector3(0, -_stepSize, 0); //Move the tetris down
+                if (!ValidMove())
+                {
+                    transform.position -= new Vector3(0, -_stepSize, 0);
+                    RegisterBlock();
+                    _spawner.SpawnSingleBlock();
 
+                }
+                _previousTime = Time.time;
             }
-            _previousTime = Time.time;
+        }
+        else
+        if (_player == GameLogic.Player.P2) //MOVE LEFT IF PLAYER 2
+        {
+            if (Time.time - _previousTime > (Input.GetKey(KeyCode.LeftArrow) ? _fallTime / 5 : _fallTime))
+            {
+                transform.position -= new Vector3(0, -_stepSize, 0); //Move the tetris down
+                if (!ValidMove())
+                {
+                    transform.position += new Vector3(0, -_stepSize, 0);
+                    RegisterBlock();
+                    _spawner.SpawnSingleBlock();
+
+                }
+                _previousTime = Time.time;
+            }
         }
     }
 
     private void MoveTetris()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        //USE WASD IF PLAYER 1
+        if (_player == GameLogic.Player.P1)
         {
-            transform.position += new Vector3(_stepSize, 0, 0); //Move the tetris up
-            if (!ValidMove())
+            if (Input.GetKeyDown(KeyCode.W))
             {
-                transform.position -= new Vector3(_stepSize, 0, 0);
-                //  RegisterBlock();
-                //  _spawner.SpawnSingleBlock();
-            }
-
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            transform.position += new Vector3(-_stepSize, 0, 0); //Move the tetris down
-            if (!ValidMove())
-            {
-                transform.position -= new Vector3(-_stepSize, 0, 0);
-                // RegisterBlock();
-                // _spawner.SpawnSingleBlock();
+                transform.position += new Vector3(_stepSize, 0, 0); //Move the tetris up
+                if (!ValidMove())
+                {
+                    transform.position -= new Vector3(_stepSize, 0, 0);
+                    //  RegisterBlock();
+                    //  _spawner.SpawnSingleBlock();
+                }
 
             }
+            else if (Input.GetKeyDown(KeyCode.S))
+            {
+                transform.position += new Vector3(-_stepSize, 0, 0); //Move the tetris down
+                if (!ValidMove())
+                {
+                    transform.position -= new Vector3(-_stepSize, 0, 0);
+                    // RegisterBlock();
+                    // _spawner.SpawnSingleBlock();
 
+                }
+
+            }
         }
+        //USE ARROW IF PLAYER 2
+        else if (_player == GameLogic.Player.P2)
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                transform.position += new Vector3(_stepSize, 0, 0); //Move the tetris up
+                if (!ValidMove())
+                {
+                    transform.position -= new Vector3(_stepSize, 0, 0);
+                    //  RegisterBlock();
+                    //  _spawner.SpawnSingleBlock();
+                }
+
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                transform.position += new Vector3(-_stepSize, 0, 0); //Move the tetris down
+                if (!ValidMove())
+                {
+                    transform.position -= new Vector3(-_stepSize, 0, 0);
+                    // RegisterBlock();
+                    // _spawner.SpawnSingleBlock();
+
+                }
+
+            }
+        }
+
     }
 
     bool ValidMove()
@@ -125,6 +193,29 @@ public class tetrisBlock : MonoBehaviour
             }
         }
         return true;
+    }
+
+    public void SetupPlayerNumberAndColor(GameLogic.Player player, SpawnBlock spawner)
+    {
+        _player = player;
+        _spawner = spawner;
+
+        //Choose the block color
+        var playerColors = _gamelogic.P1Colors;
+        if (player == GameLogic.Player.P2)
+        {
+            playerColors = _gamelogic.P2Colors;
+        }
+        float guess = UnityEngine.Random.Range(0, 1f);
+        guess *= playerColors.Length;
+
+        var chosenColor = playerColors[Mathf.FloorToInt(guess)];
+        chosenColor.a = 1;
+        //Apply the color accordingly
+        foreach (var item in _childblocks)
+        {
+            item.GetComponent<SpriteRenderer>().color = chosenColor;
+        }
     }
 
 

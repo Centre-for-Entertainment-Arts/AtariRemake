@@ -7,6 +7,9 @@ public class SpawnBlock : MonoBehaviour
     [SerializeField]
     private GameObject[] _blocks;
 
+    [SerializeField]
+    private GameLogic.Player _player; //Spawn for which player;
+
     void Start()
     {
         SpawnSingleBlock();
@@ -16,6 +19,7 @@ public class SpawnBlock : MonoBehaviour
     {
         float guess = Random.Range(0, 1f);
         guess *= _blocks.Length;
-        Instantiate(_blocks[Mathf.FloorToInt(guess)], transform.position, Quaternion.identity);
+        var clone = Instantiate(_blocks[Mathf.FloorToInt(guess)], transform.position, Quaternion.identity);
+        clone.GetComponent<tetrisBlock>().SetupPlayerNumberAndColor(_player, this);
     }
 }

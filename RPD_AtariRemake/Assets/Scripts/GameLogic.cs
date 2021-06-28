@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class GameLogic : MonoBehaviour
 {
-    public static int width = 20, height = 21;
+    public static int width = 20, height = 23;
     public static Transform[,] grid = new Transform[width, height];
 
-    // Start is called before the first frame update
-    void Start()
+    public Color[] P1Colors;
+    public Color[] P2Colors;
+
+    public enum Player
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+        P1,
+        P2
+    };
 }
