@@ -187,9 +187,12 @@ public class tetrisBlock : MonoBehaviour
             {
                 return false;
             }
-            if (child.transform.position.y < GameLogic.height && GameLogic.grid[Mathf.FloorToInt(child.transform.position.x), Mathf.FloorToInt(child.transform.position.y)] != null)
+            if (_player == GameLogic.Player.P1)
             {
-                return false;
+                if (child.transform.position.y < GameLogic.height && GameLogic.grid[Mathf.FloorToInt(child.transform.position.x), Mathf.FloorToInt(child.transform.position.y)] != null)
+                {
+                    return false;
+                }
             }
         }
         return true;
