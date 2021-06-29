@@ -26,6 +26,9 @@ public class tetrisBlock : MonoBehaviour
 
     public GameLogic.Player _player;
 
+    public GameManager Manager;
+    public bool lastBlock;
+
     /// <summary>
     /// This function is called when the object becomes enabled and active.
     /// </summary>
@@ -74,9 +77,9 @@ public class tetrisBlock : MonoBehaviour
     private void RegisterBlock()
     {
         _finished = true;
+        Manager.ReduceBlockCount(_player);
         foreach (GameObject child in _childblocks)
         {
-            Debug.Log($"{Mathf.FloorToInt(child.transform.position.x)}, {Mathf.FloorToInt(child.transform.position.y)}");
             GameLogic.Grid[Mathf.FloorToInt(child.transform.position.x), Mathf.FloorToInt(child.transform.position.y)] = child.transform;
         }
     }
