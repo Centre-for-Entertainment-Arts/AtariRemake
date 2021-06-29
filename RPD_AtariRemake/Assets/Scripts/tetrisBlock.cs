@@ -48,7 +48,7 @@ public class tetrisBlock : MonoBehaviour
     {
         if (_player == GameLogic.Player.P1)
         {
-            if (Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKeyDown(KeyCode.W))
             {
                 _rotationPoint.eulerAngles += new Vector3(0, 0, 90);
                 if (!ValidMove())
@@ -60,7 +60,7 @@ public class tetrisBlock : MonoBehaviour
         else
         if (_player == GameLogic.Player.P2)
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 _rotationPoint.eulerAngles += new Vector3(0, 0, 90);
                 if (!ValidMove())
@@ -77,31 +77,30 @@ public class tetrisBlock : MonoBehaviour
         foreach (GameObject child in _childblocks)
         {
             Debug.Log($"{Mathf.FloorToInt(child.transform.position.x)}, {Mathf.FloorToInt(child.transform.position.y)}");
-            GameLogic.grid[Mathf.FloorToInt(child.transform.position.x), Mathf.FloorToInt(child.transform.position.y)] = child.transform;
+            GameLogic.Grid[Mathf.FloorToInt(child.transform.position.x), Mathf.FloorToInt(child.transform.position.y)] = child.transform;
         }
     }
 
     private void FallTetris()
     {
-        if (_player == GameLogic.Player.P1) //MOVE RIGHT IF PLAYER 1
+        if (_player == GameLogic.Player.P1) //MOVE DOWN IF PLAYER 1
         {
-            if (Time.time - _previousTime > (Input.GetKey(KeyCode.D) ? _fallTime / 5 : _fallTime))
+            if (Time.time - _previousTime > (Input.GetKey(KeyCode.S) ? _fallTime / 5 : _fallTime))
             {
                 transform.position += new Vector3(0, -_stepSize, 0); //Move the tetris down
                 if (!ValidMove())
                 {
-                    transform.position -= new Vector3(0, -_stepSize, 0);
+                    transform.position += new Vector3(0, _stepSize, 0);
                     RegisterBlock();
                     _spawner.SpawnSingleBlock();
-
                 }
                 _previousTime = Time.time;
             }
         }
         else
-        if (_player == GameLogic.Player.P2) //MOVE LEFT IF PLAYER 2
+        if (_player == GameLogic.Player.P2) //MOVE UP IF PLAYER 2
         {
-            if (Time.time - _previousTime > (Input.GetKey(KeyCode.LeftArrow) ? _fallTime / 5 : _fallTime))
+            if (Time.time - _previousTime > (Input.GetKey(KeyCode.UpArrow) ? _fallTime / 5 : _fallTime))
             {
                 transform.position -= new Vector3(0, -_stepSize, 0); //Move the tetris down
                 if (!ValidMove())
@@ -121,25 +120,22 @@ public class tetrisBlock : MonoBehaviour
         //USE WASD IF PLAYER 1
         if (_player == GameLogic.Player.P1)
         {
-            if (Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKeyDown(KeyCode.D))
             {
-                transform.position += new Vector3(_stepSize, 0, 0); //Move the tetris up
+                transform.position += new Vector3(_stepSize, 0, 0); //Move the tetris Right
                 if (!ValidMove())
                 {
                     transform.position -= new Vector3(_stepSize, 0, 0);
-                    //  RegisterBlock();
-                    //  _spawner.SpawnSingleBlock();
+
                 }
 
             }
-            else if (Input.GetKeyDown(KeyCode.S))
+            else if (Input.GetKeyDown(KeyCode.A))
             {
-                transform.position += new Vector3(-_stepSize, 0, 0); //Move the tetris down
+                transform.position += new Vector3(-_stepSize, 0, 0); //Move the tetris Left
                 if (!ValidMove())
                 {
                     transform.position -= new Vector3(-_stepSize, 0, 0);
-                    // RegisterBlock();
-                    // _spawner.SpawnSingleBlock();
 
                 }
 
@@ -148,9 +144,9 @@ public class tetrisBlock : MonoBehaviour
         //USE ARROW IF PLAYER 2
         else if (_player == GameLogic.Player.P2)
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                transform.position += new Vector3(_stepSize, 0, 0); //Move the tetris up
+                transform.position += new Vector3(_stepSize, 0, 0); //Move the tetris Right
                 if (!ValidMove())
                 {
                     transform.position -= new Vector3(_stepSize, 0, 0);
@@ -159,9 +155,9 @@ public class tetrisBlock : MonoBehaviour
                 }
 
             }
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                transform.position += new Vector3(-_stepSize, 0, 0); //Move the tetris down
+                transform.position += new Vector3(-_stepSize, 0, 0); //Move the tetris Left
                 if (!ValidMove())
                 {
                     transform.position -= new Vector3(-_stepSize, 0, 0);
@@ -177,25 +173,46 @@ public class tetrisBlock : MonoBehaviour
 
     bool ValidMove()
     {
-        foreach (GameObject child in _childblocks)
+        //Player 1 Valid Move
+        if (_player == GameLogic.Player.P1)
         {
-
-            int roundedX = Mathf.RoundToInt(child.transform.position.x);
-            int roundedY = Mathf.RoundToInt(child.transform.position.y);
-
-            if (roundedX < 1 || roundedX >= GameLogic.width || roundedY < 2 || roundedY >= GameLogic.height) //The two is coming from the player safe zones
+            foreach (GameObject child in _childblocks)
             {
-                return false;
-            }
-            if (_player == GameLogic.Player.P1)
-            {
-                if (child.transform.position.y < GameLogic.height && GameLogic.grid[Mathf.FloorToInt(child.transform.position.x), Mathf.FloorToInt(child.transform.position.y)] != null)
+
+                int roundedX = Mathf.RoundToInt(child.transform.position.x);
+                int roundedY = Mathf.RoundToInt(child.transform.position.y);
+
+                if (roundedX < GameLogic.p1MinWidth || roundedX >= GameLogic.p1MaxWidth || roundedY < GameLogic.p1MinHeight || roundedY >= GameLogic.p1MaxHeight + 2) //1 is added to maxHeight to prevent spawn bug
                 {
                     return false;
                 }
+
+                if (child.transform.position.y < GameLogic.p1MaxHeight && GameLogic.Grid[Mathf.FloorToInt(child.transform.position.x), Mathf.FloorToInt(child.transform.position.y)] != null)
+                    return false;
             }
+
+            return true;
         }
-        return true;
+        if (_player == GameLogic.Player.P2)
+        {
+            foreach (GameObject child in _childblocks)
+            {
+
+                int roundedX = Mathf.RoundToInt(child.transform.position.x);
+                int roundedY = Mathf.RoundToInt(child.transform.position.y);
+
+                if (roundedX < GameLogic.p2MinWidth || roundedX >= GameLogic.p2MaxWidth || roundedY < GameLogic.p1MinHeight - 2 || roundedY >= GameLogic.p1MaxHeight) //2 is reduced from minHeight to prevent spawn bug
+                {
+                    return false;
+                }
+
+                if (child.transform.position.y < GameLogic.p2MinHeight && GameLogic.Grid[Mathf.FloorToInt(child.transform.position.x), Mathf.FloorToInt(child.transform.position.y)] != null)
+                    return false;
+            }
+
+            return true;
+        }
+        return false;
     }
 
     public void SetupPlayerNumberAndColor(GameLogic.Player player, SpawnBlock spawner)
