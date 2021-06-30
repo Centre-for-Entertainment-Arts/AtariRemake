@@ -16,6 +16,9 @@ public class Bounds : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.GetComponent<Ball>()._player == _player) //Respawn only if the ball falls back towards the player side
+        {
+            Debug.Log("RESPAWN");
             other.gameObject.GetComponent<Ball>().Respawn();
+        }
     }
 }

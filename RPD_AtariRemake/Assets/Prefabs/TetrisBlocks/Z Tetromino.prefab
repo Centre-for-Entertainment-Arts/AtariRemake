@@ -575,3 +575,5 @@ MonoBehaviour:
   - {fileID: 1938189497292140753}
   - {fileID: 1938189497073961634}
   _player: 0
+  Manager: {fileID: 0}
+  lastBlock: 0

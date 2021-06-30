@@ -12,15 +12,15 @@ public class GameManager : MonoBehaviour
     private GameObject _TetrisAssets;
 
     [SerializeField]
-    public static int player1BlockCount = 10;
+    public static int player1BlockCount = 11;
 
     [SerializeField]
-    public static int player2BlockCount = 10;
+    public static int player2BlockCount = 11;
 
     // Start is called before the first frame update
     void Start()
     {
-        _BallBreakerAssets.SetActive(false);
+        // _BallBreakerAssets.SetActive(false);
 
     }
 
