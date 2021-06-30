@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1938189497073961628}
   - component: {fileID: 1000616563308833854}
   - component: {fileID: 343683893}
+  - component: {fileID: 5980104218161142748}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -122,6 +123,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 592e2b74376a3ff4a8fbc55c230ed208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &5980104218161142748
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938189497073961634}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f0b264555344a7a45bc8fbe500da2acc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1938189497292140753
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,6 +154,7 @@ GameObject:
   - component: {fileID: 1938189497292140755}
   - component: {fileID: 3976672211417477224}
   - component: {fileID: 343683894}
+  - component: {fileID: 4732127965702107923}
   m_Layer: 0
   m_Name: Square (1)
   m_TagString: Untagged
@@ -244,6 +265,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 592e2b74376a3ff4a8fbc55c230ed208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &4732127965702107923
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938189497292140753}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f0b264555344a7a45bc8fbe500da2acc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1938189497739442017
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,6 +296,7 @@ GameObject:
   - component: {fileID: 1938189497739442019}
   - component: {fileID: 2618723490933537992}
   - component: {fileID: 343683895}
+  - component: {fileID: 858023840062853914}
   m_Layer: 0
   m_Name: Square (2)
   m_TagString: Untagged
@@ -366,6 +407,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 592e2b74376a3ff4a8fbc55c230ed208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &858023840062853914
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938189497739442017}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f0b264555344a7a45bc8fbe500da2acc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1938189497893586441
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,6 +438,7 @@ GameObject:
   - component: {fileID: 1938189497893586443}
   - component: {fileID: 2011932721954215206}
   - component: {fileID: 343683896}
+  - component: {fileID: 6182583295931105812}
   m_Layer: 0
   m_Name: Square (3)
   m_TagString: Untagged
@@ -488,6 +549,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 592e2b74376a3ff4a8fbc55c230ed208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &6182583295931105812
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938189497893586441}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f0b264555344a7a45bc8fbe500da2acc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1938189498225118288
 GameObject:
   m_ObjectHideFlags: 0

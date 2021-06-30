@@ -1,5 +1,81 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!95 &7477557203039642968
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5867440500281637551}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f0b264555344a7a45bc8fbe500da2acc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!95 &1883876405047805938
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5867440500439976903}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f0b264555344a7a45bc8fbe500da2acc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!95 &4064137985395451910
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5867440499948538999}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f0b264555344a7a45bc8fbe500da2acc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!95 &3877096457353123123
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5867440500032501252}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f0b264555344a7a45bc8fbe500da2acc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &5442744289204501670
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17,7 +93,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1938189498657762972, guid: ebb9ca8eae0eccc4aa00b1b1120947ae, type: 3}
       propertyPath: m_Name
-      value: Z Tetromino 2
+      value: Z Tetromino 2 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1938189498657762974, guid: ebb9ca8eae0eccc4aa00b1b1120947ae, type: 3}
       propertyPath: m_RootOrder
@@ -65,3 +141,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebb9ca8eae0eccc4aa00b1b1120947ae, type: 3}
+--- !u!1 &5867440500281637551 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1938189497893586441, guid: ebb9ca8eae0eccc4aa00b1b1120947ae, type: 3}
+  m_PrefabInstance: {fileID: 5442744289204501670}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5867440500439976903 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1938189497739442017, guid: ebb9ca8eae0eccc4aa00b1b1120947ae, type: 3}
+  m_PrefabInstance: {fileID: 5442744289204501670}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5867440499948538999 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1938189497292140753, guid: ebb9ca8eae0eccc4aa00b1b1120947ae, type: 3}
+  m_PrefabInstance: {fileID: 5442744289204501670}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5867440500032501252 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1938189497073961634, guid: ebb9ca8eae0eccc4aa00b1b1120947ae, type: 3}
+  m_PrefabInstance: {fileID: 5442744289204501670}
+  m_PrefabAsset: {fileID: 0}
