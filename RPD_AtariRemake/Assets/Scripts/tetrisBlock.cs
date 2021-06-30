@@ -12,7 +12,7 @@ public class tetrisBlock : MonoBehaviour
 
     private float _previousTime;
     [SerializeField]
-    private float _fallTime = 0.8f;
+    private float _fallTime = 5f; //0.8f is the original tetris' speed
 
     [SerializeField]
     private float _stepSize = 1f;
@@ -25,6 +25,9 @@ public class tetrisBlock : MonoBehaviour
     private GameObject[] _childblocks;
 
     public GameLogic.Player _player;
+
+    public GameManager Manager;
+    public bool lastBlock;
 
     /// <summary>
     /// This function is called when the object becomes enabled and active.
@@ -74,9 +77,19 @@ public class tetrisBlock : MonoBehaviour
     private void RegisterBlock()
     {
         _finished = true;
+        Manager.ReduceBlockCount(_player);
+
+        int roundedX = Mathf.RoundToInt(gameObject.transform.position.x);
+        int roundedY = Mathf.RoundToInt(gameObject.transform.position.y);
+        if (roundedY < GameLogic.p1MinHeight || roundedY >= GameLogic.p1MaxHeight - 1)
+        {
+            Destroy(gameObject); //If the current block is out of bounds dont's register it and destroy it.
+            return;
+        }
+
+
         foreach (GameObject child in _childblocks)
         {
-            Debug.Log($"{Mathf.FloorToInt(child.transform.position.x)}, {Mathf.FloorToInt(child.transform.position.y)}");
             GameLogic.Grid[Mathf.FloorToInt(child.transform.position.x), Mathf.FloorToInt(child.transform.position.y)] = child.transform;
         }
     }
