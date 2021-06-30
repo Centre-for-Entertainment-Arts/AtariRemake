@@ -383,13 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _blocks:
-  - {fileID: 1996843080515004412, guid: fc0938188e6ec6647a3ce2c406aaba13, type: 3}
   - {fileID: 7297299065905164183, guid: a1b25afa338207a47bdc453bf3c006a3, type: 3}
-  - {fileID: 5864821527978029986, guid: 06adc1e5485d6ee4dab72c3e007bc85e, type: 3}
-  - {fileID: 2353193872902916751, guid: 0b263c96473b47c4e8853696fc772b19, type: 3}
-  - {fileID: 12960122700478970, guid: dd0df532d7e640c428b47111170c51b6, type: 3}
-  - {fileID: 5867440500812976698, guid: d67e58a5d6375a5408d1c584311068d9, type: 3}
-  - {fileID: 1938189498657762972, guid: ebb9ca8eae0eccc4aa00b1b1120947ae, type: 3}
   _player: 1
   Manager: {fileID: 1377060711}
 --- !u!4 &243772265
@@ -422,7 +416,7 @@ GameObject:
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &258876615
 MonoBehaviour:
   m_ObjectHideFlags: 0
