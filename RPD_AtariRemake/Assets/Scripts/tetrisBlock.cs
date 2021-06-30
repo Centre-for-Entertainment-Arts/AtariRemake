@@ -90,6 +90,7 @@ public class tetrisBlock : MonoBehaviour
 
         foreach (GameObject child in _childblocks)
         {
+            if (child == null) continue;
             GameLogic.Grid[Mathf.FloorToInt(child.transform.position.x), Mathf.FloorToInt(child.transform.position.y)] = child.transform;
         }
     }
@@ -192,6 +193,7 @@ public class tetrisBlock : MonoBehaviour
             foreach (GameObject child in _childblocks)
             {
 
+                if (child == null) continue;
                 int roundedX = Mathf.RoundToInt(child.transform.position.x);
                 int roundedY = Mathf.RoundToInt(child.transform.position.y);
 
@@ -210,11 +212,11 @@ public class tetrisBlock : MonoBehaviour
         {
             foreach (GameObject child in _childblocks)
             {
-
+                if (child == null) continue;
                 int roundedX = Mathf.RoundToInt(child.transform.position.x);
                 int roundedY = Mathf.RoundToInt(child.transform.position.y);
 
-                if (roundedX < GameLogic.p2MinWidth || roundedX >= GameLogic.p2MaxWidth || roundedY < GameLogic.p1MinHeight - 2 || roundedY >= GameLogic.p1MaxHeight) //2 is reduced from minHeight to prevent spawn bug
+                if (roundedX < GameLogic.p2MinWidth || roundedX >= GameLogic.p2MaxWidth || roundedY < GameLogic.p1MinHeight - 3 || roundedY >= GameLogic.p1MaxHeight) //2 is reduced from minHeight to prevent spawn bug
                 {
                     return false;
                 }

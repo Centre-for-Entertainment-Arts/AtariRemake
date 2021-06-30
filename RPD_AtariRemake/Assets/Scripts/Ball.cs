@@ -13,8 +13,8 @@ public class Ball : MonoBehaviour
 
     private Rigidbody2D _rb;
 
-    private Vector2[] p1VelocityDir = { new Vector2(1, 1), new Vector2(1, -1) };
-    private Vector2[] p2VelocityDir = { new Vector2(-1, 1), new Vector2(-1, -1) };
+    private Vector2[] p1VelocityDir = { new Vector2(-1, 1), new Vector2(-1, -1) };
+    private Vector2[] p2VelocityDir = { new Vector2(1, 1), new Vector2(1, -1) };
 
     /// <summary>
     /// This function is called when the object becomes enabled and active.
