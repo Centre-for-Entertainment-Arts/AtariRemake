@@ -6,7 +6,10 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField]
-    private GameObject _BallBreakerAssets;
+    private GameObject _P1BallBreakerAssets;
+
+    [SerializeField]
+    private GameObject _P2BallBreakerAssets;
 
     [SerializeField]
     private GameObject _TetrisAssets;
@@ -17,17 +20,38 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public static int player2BlockCount = 11;
 
+    private bool p1IsBall;
+
+    private bool p2IsBall;
+
     // Start is called before the first frame update
     void Start()
     {
-        // _BallBreakerAssets.SetActive(false);
+        DisableBallBreakerAssets();
+    }
+
+    public void DisableBallBreakerAssets()
+    {
+        _P1BallBreakerAssets.SetActive(false);
+        _P2BallBreakerAssets.SetActive(false);
+
+    }
+    public void SetupBallBreakerP1()
+    {
+        p1IsBall = true;
+        _P1BallBreakerAssets.SetActive(true);
 
     }
 
-    public void SetupBallBreaker()
+    public void SetupBallBreakerP2()
+    {
+        p2IsBall = true;
+        _P2BallBreakerAssets.SetActive(true);
+    }
+
+    public void SetupBallBreakerCompletely()
     {
         _TetrisAssets.SetActive(false);
-        _BallBreakerAssets.SetActive(true);
     }
 
     public void ReduceBlockCount(GameLogic.Player player)
@@ -42,9 +66,23 @@ public class GameManager : MonoBehaviour
         }
         Debug.Log($"{player1BlockCount}&&{player2BlockCount}");
 
-        if (player1BlockCount <= 0 && player2BlockCount <= 0)
+        if (player1BlockCount <= 0)
         {
-            SetupBallBreaker();
+            if (p1IsBall == false)
+            {
+                SetupBallBreakerP1();
+            }
+        }
+        if (player2BlockCount <= 0)
+        {
+            if (p2IsBall == false)
+            {
+                SetupBallBreakerP2();
+            }
+        }
+        if (p1IsBall && p2IsBall)
+        {
+            SetupBallBreakerCompletely();
         }
     }
 }
