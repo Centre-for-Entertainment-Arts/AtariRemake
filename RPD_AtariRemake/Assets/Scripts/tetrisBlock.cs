@@ -79,19 +79,30 @@ public class tetrisBlock : MonoBehaviour
         _finished = true;
         Manager.ReduceBlockCount(_player);
 
-        int roundedX = Mathf.RoundToInt(gameObject.transform.position.x);
-        int roundedY = Mathf.RoundToInt(gameObject.transform.position.y);
-        if (roundedY < GameLogic.p1MinHeight || roundedY >= GameLogic.p1MaxHeight - 1)
+        int roundedX = Mathf.FloorToInt(gameObject.transform.position.x);
+        int roundedY = Mathf.FloorToInt(gameObject.transform.position.y);
+        if (_player == GameLogic.Player.P1)
         {
-            Destroy(gameObject); //If the current block is out of bounds dont's register it and destroy it.
-            return;
+            if (roundedY > GameLogic.p1StartPos + 2 || roundedY <= GameLogic.p1EndPos)
+            {
+                Destroy(gameObject); //If the current block is out of bounds dont's register it and destroy it.
+                return;
+            }
         }
-
+        if (_player == GameLogic.Player.P2)
+        {
+            if (roundedY >= GameLogic.p2EndPos || roundedY < GameLogic.p2StartPos)
+            {
+                Destroy(gameObject); //If the current block is out of bounds dont's register it and destroy it.
+                return;
+            }
+        }
 
         foreach (GameObject child in _childblocks)
         {
             if (child == null) continue;
             GameLogic.Grid[Mathf.FloorToInt(child.transform.position.x), Mathf.FloorToInt(child.transform.position.y)] = child.transform;
+            Debug.Log($"Registered at: {Mathf.FloorToInt(child.transform.position.x)},{Mathf.FloorToInt(child.transform.position.y)}");
         }
     }
 
@@ -194,15 +205,15 @@ public class tetrisBlock : MonoBehaviour
             {
 
                 if (child == null) continue;
-                int roundedX = Mathf.RoundToInt(child.transform.position.x);
-                int roundedY = Mathf.RoundToInt(child.transform.position.y);
+                int roundedX = Mathf.FloorToInt(child.transform.position.x);
+                int roundedY = Mathf.FloorToInt(child.transform.position.y);
 
-                if (roundedX < GameLogic.p1MinWidth || roundedX >= GameLogic.p1MaxWidth || roundedY < GameLogic.p1MinHeight || roundedY >= GameLogic.p1MaxHeight + 2) //1 is added to maxHeight to prevent spawn bug
+                if (roundedX < GameLogic.p1MinWidth || roundedX >= GameLogic.p1MaxWidth || roundedY > GameLogic.p1StartPos + 2 || roundedY <= GameLogic.p1EndPos) //1 is added to maxHeight to prevent spawn bug
                 {
                     return false;
                 }
 
-                if (child.transform.position.y < GameLogic.p1MaxHeight && GameLogic.Grid[Mathf.FloorToInt(child.transform.position.x), Mathf.FloorToInt(child.transform.position.y)] != null)
+                if (child.transform.position.y > GameLogic.p1EndPos && GameLogic.Grid[Mathf.FloorToInt(child.transform.position.x), Mathf.FloorToInt(child.transform.position.y)] != null)
                     return false;
             }
 
@@ -213,15 +224,14 @@ public class tetrisBlock : MonoBehaviour
             foreach (GameObject child in _childblocks)
             {
                 if (child == null) continue;
-                int roundedX = Mathf.RoundToInt(child.transform.position.x);
-                int roundedY = Mathf.RoundToInt(child.transform.position.y);
+                int roundedX = Mathf.FloorToInt(child.transform.position.x);
+                int roundedY = Mathf.FloorToInt(child.transform.position.y);
 
-                if (roundedX < GameLogic.p2MinWidth || roundedX >= GameLogic.p2MaxWidth || roundedY < GameLogic.p1MinHeight || roundedY >= GameLogic.p1MaxHeight + 2) //2 is reduced from minHeight to prevent spawn bug
+                if (roundedX < GameLogic.p2MinWidth || roundedX >= GameLogic.p2MaxWidth || roundedY >= GameLogic.p2EndPos || roundedY < GameLogic.p2StartPos) //2 is reduced from minHeight to prevent spawn bug
                 {
                     return false;
                 }
-
-                if (child.transform.position.y < GameLogic.p2MinHeight && GameLogic.Grid[Mathf.FloorToInt(child.transform.position.x), Mathf.FloorToInt(child.transform.position.y)] != null)
+                if (child.transform.position.y < GameLogic.p2EndPos && GameLogic.Grid[Mathf.FloorToInt(child.transform.position.x), Mathf.FloorToInt(child.transform.position.y)] != null)
                     return false;
             }
 
