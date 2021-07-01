@@ -36,6 +36,10 @@ public class Bounds : MonoBehaviour
                 if (GameManager.p2Life > 0)
                     other.gameObject.GetComponent<Ball>().Respawn();
         }
+        else
+        {
+            _manager.GameOver();
+        }
         doneOnce = false;
     }
 }
