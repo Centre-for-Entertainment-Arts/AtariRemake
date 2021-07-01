@@ -40,6 +40,9 @@ public class GameManager : MonoBehaviour
     public static int p1Life = 2;
     public static int p2Life = 2;
 
+    [SerializeField]
+    private GameObject _GameOverUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +50,7 @@ public class GameManager : MonoBehaviour
         UpdateBlockCount();
         UpdateLiveCount();
         Time.timeScale = 1;
+        _GameOverUI.SetActive(false);
     }
 
     public void ReduceHealth(GameLogic.Player player)
@@ -150,5 +154,6 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         Debug.Log("GAME OVER");
+        _GameOverUI.SetActive(true);
     }
 }
