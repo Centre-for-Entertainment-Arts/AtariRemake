@@ -37,7 +37,6 @@ public class Ball : MonoBehaviour
     public void Respawn()
     {
         StartCoroutine(PauseAndShoot());
-
     }
 
     IEnumerator PauseAndShoot()

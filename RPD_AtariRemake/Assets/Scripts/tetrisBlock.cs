@@ -102,7 +102,7 @@ public class tetrisBlock : MonoBehaviour
         {
             if (child == null) continue;
             GameLogic.Grid[Mathf.FloorToInt(child.transform.position.x), Mathf.FloorToInt(child.transform.position.y)] = child.transform;
-            Debug.Log($"Registered at: {Mathf.FloorToInt(child.transform.position.x)},{Mathf.FloorToInt(child.transform.position.y)}");
+            // Debug.Log($"Registered at: {Mathf.FloorToInt(child.transform.position.x)},{Mathf.FloorToInt(child.transform.position.y)}");
         }
     }
 

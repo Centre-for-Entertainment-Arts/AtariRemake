@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,18 @@ public class GameManager : MonoBehaviour
     private GameObject _TetrisAssets;
 
     [SerializeField]
+    private GameObject _P1TetrisUI;
+
+    [SerializeField]
+    private GameObject _P1BallBreakerUI;
+
+    [SerializeField]
+    private GameObject _P2TetrisUI;
+
+    [SerializeField]
+    private GameObject _P2BallBreakerUI;
+
+    [SerializeField]
     public static int player1BlockCount = 11;
 
     [SerializeField]
@@ -24,22 +37,53 @@ public class GameManager : MonoBehaviour
 
     private bool p2IsBall;
 
+    public static int p1Life = 2;
+    public static int p2Life = 2;
+
     // Start is called before the first frame update
     void Start()
     {
         DisableBallBreakerAssets();
+        UpdateBlockCount();
+        UpdateLiveCount();
+        Time.timeScale = 1;
+    }
+
+    public void ReduceHealth(GameLogic.Player player)
+    {
+        if (player == GameLogic.Player.P1)
+        {
+            p1Life = p1Life - 1 < 0 ? 0 : p1Life - 1;
+        }
+        else
+        if (player == GameLogic.Player.P2)
+        {
+            p2Life = p2Life - 1 < 0 ? 0 : p2Life - 1;
+        }
+
+        Debug.Log("p1:" + p1Life);
+        Debug.Log("p2:" + p2Life);
+
+        UpdateLiveCount();
+
+        if (p1Life <= 0 || p2Life <= 0)
+            GameOver();
     }
 
     public void DisableBallBreakerAssets()
     {
         _P1BallBreakerAssets.SetActive(false);
         _P2BallBreakerAssets.SetActive(false);
-
+        _P1BallBreakerUI.SetActive(false);
+        _P2BallBreakerUI.SetActive(false);
     }
+
     public void SetupBallBreakerP1()
     {
         p1IsBall = true;
-        _P1BallBreakerAssets.SetActive(true);
+        // _P1BallBreakerAssets.SetActive(true);
+        //  _P1TetrisUI.SetActive(false);
+        // _P1BallBreakerUI.SetActive(true);
 
     }
 
@@ -47,6 +91,8 @@ public class GameManager : MonoBehaviour
     {
         p2IsBall = true;
         _P2BallBreakerAssets.SetActive(true);
+        _P2TetrisUI.SetActive(false);
+        _P2BallBreakerUI.SetActive(true);
     }
 
     public void SetupBallBreakerCompletely()
@@ -64,7 +110,7 @@ public class GameManager : MonoBehaviour
         {
             player2BlockCount--;
         }
-        Debug.Log($"{player1BlockCount}&&{player2BlockCount}");
+        // Debug.Log($"{player1BlockCount}&&{player2BlockCount}");
 
         if (player1BlockCount <= 0)
         {
@@ -84,5 +130,25 @@ public class GameManager : MonoBehaviour
         {
             SetupBallBreakerCompletely();
         }
+
+        UpdateBlockCount();
+    }
+
+    public void UpdateBlockCount()
+    {
+        _P1TetrisUI.GetComponentInChildren<TMP_Text>().text = "BLOCK COUNT: " + player1BlockCount.ToString();
+        _P2TetrisUI.GetComponentInChildren<TMP_Text>().text = "BLOCK COUNT: " + player2BlockCount.ToString();
+    }
+
+    public void UpdateLiveCount()
+    {
+        _P1BallBreakerUI.GetComponentInChildren<TMP_Text>().text = "LIVES: " + p1Life.ToString();
+        _P2BallBreakerUI.GetComponentInChildren<TMP_Text>().text = "LIVES: " + p2Life.ToString();
+    }
+
+    public void GameOver()
+    {
+        Time.timeScale = 0;
+        Debug.Log("GAME OVER");
     }
 }
