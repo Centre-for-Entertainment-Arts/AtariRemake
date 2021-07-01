@@ -41,6 +41,9 @@ public class GameManager : MonoBehaviour
     public static int p2Life = 2;
 
     [SerializeField]
+    TMP_Text GameOverText;
+
+    [SerializeField]
     private GameObject _GameOverUI;
 
     // Start is called before the first frame update
@@ -85,9 +88,9 @@ public class GameManager : MonoBehaviour
     public void SetupBallBreakerP1()
     {
         p1IsBall = true;
-        // _P1BallBreakerAssets.SetActive(true);
-        //  _P1TetrisUI.SetActive(false);
-        // _P1BallBreakerUI.SetActive(true);
+        _P1BallBreakerAssets.SetActive(true);
+        _P1TetrisUI.SetActive(false);
+        _P1BallBreakerUI.SetActive(true);
 
     }
 
@@ -155,5 +158,14 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         Debug.Log("GAME OVER");
         _GameOverUI.SetActive(true);
+
+        string endgameText = "DEFAULT";
+        if (p1Life > 0)
+            endgameText = "PLAYER 1 WINS";
+        else
+        {
+            endgameText = "PLAYER 2 WINS";
+        }
+        GameOverText.text = endgameText;
     }
 }
