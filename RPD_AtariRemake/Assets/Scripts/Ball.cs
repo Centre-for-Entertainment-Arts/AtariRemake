@@ -23,7 +23,6 @@ public class Ball : MonoBehaviour
     {
         _startPoint = gameObject.transform.localPosition;
         _rb = GetComponent<Rigidbody2D>();
-        Debug.Log(_startPoint);
     }
 
     /// <summary>
