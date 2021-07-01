@@ -143,14 +143,14 @@ public class GameManager : MonoBehaviour
 
     public void UpdateBlockCount()
     {
-        _P1TetrisUI.GetComponentInChildren<TMP_Text>().text = "BLOCK COUNT: " + player1BlockCount.ToString();
-        _P2TetrisUI.GetComponentInChildren<TMP_Text>().text = "BLOCK COUNT: " + player2BlockCount.ToString();
+        _P1TetrisUI.GetComponentInChildren<TMP_Text>().text = "P1 BLOCKS: " + player1BlockCount.ToString();
+        _P2TetrisUI.GetComponentInChildren<TMP_Text>().text = "P2 BLOCKS: " + player2BlockCount.ToString();
     }
 
     public void UpdateLiveCount()
     {
-        _P1BallBreakerUI.GetComponentInChildren<TMP_Text>().text = "LIVES: " + p1Life.ToString();
-        _P2BallBreakerUI.GetComponentInChildren<TMP_Text>().text = "LIVES: " + p2Life.ToString();
+        _P1BallBreakerUI.GetComponentInChildren<TMP_Text>().text = "P1 LIVES: " + p1Life.ToString();
+        _P2BallBreakerUI.GetComponentInChildren<TMP_Text>().text = "P2 LIVES: " + p2Life.ToString();
     }
 
     public void GameOver()
