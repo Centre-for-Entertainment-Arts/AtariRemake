@@ -647,7 +647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotationPoint: {fileID: 1938189498225118289}
-  _fallTime: 0.8
+  _fallTime: 0.1
   _stepSize: 1
   _childblocks:
   - {fileID: 1938189497893586441}
