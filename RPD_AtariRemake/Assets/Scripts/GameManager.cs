@@ -48,6 +48,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject _GameOverUI;
 
+    [SerializeField]
+    private TMP_Text _breakoutText;
+    bool textShown = false;
+
 
     [Header("WINNER")]
 
@@ -91,6 +95,7 @@ public class GameManager : MonoBehaviour
 
             levelMusic.clip = TetrisMusic;
             DisableBallBreakerAssets();
+            DisableBreakoutText();
             UpdateBlockCount();
             UpdateLiveCount();
             _GameOverUI.SetActive(false);
@@ -136,6 +141,14 @@ public class GameManager : MonoBehaviour
 
     public void SetupBallBreakerP1()
     {
+        if (textShown == false)
+        {
+            _breakoutText.color = Color.blue;
+            _breakoutText.enabled = true;
+            textShown = true;
+            Invoke("DisableBreakoutText", 1f);
+        }
+
         SwitchMusicToBB();
         p1IsBall = true;
         _P1BallBreakerAssets.SetActive(true);
@@ -146,11 +159,23 @@ public class GameManager : MonoBehaviour
 
     public void SetupBallBreakerP2()
     {
+        if (textShown == false)
+        {
+            _breakoutText.color = Color.red;
+            _breakoutText.enabled = true;
+            textShown = true;
+            Invoke("DisableBreakoutText", 1f);
+        }
         SwitchMusicToBB();
         p2IsBall = true;
         _P2BallBreakerAssets.SetActive(true);
         _P2TetrisUI.SetActive(false);
         _P2BallBreakerUI.SetActive(true);
+    }
+
+    public void DisableBreakoutText()
+    {
+        _breakoutText.enabled = false;
     }
 
     public void SetupBallBreakerCompletely()

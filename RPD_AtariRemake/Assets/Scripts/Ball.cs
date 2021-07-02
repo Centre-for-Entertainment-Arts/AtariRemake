@@ -18,6 +18,8 @@ public class Ball : MonoBehaviour
 
     private AudioSource _source;
 
+    public float time = 2.0f;
+
     /// <summary>
     /// This function is called when the object becomes enabled and active.
     /// </summary>
@@ -33,22 +35,22 @@ public class Ball : MonoBehaviour
     /// </summary>
     void OnEnable()
     {
-        Respawn();
+        Respawn(time);
     }
 
 
-    public void Respawn()
+    public void Respawn(float time = 2.0f)
     {
-        StartCoroutine(PauseAndShoot());
+        StartCoroutine(PauseAndShoot(time));
     }
 
-    IEnumerator PauseAndShoot()
+    IEnumerator PauseAndShoot(float time = 2.0f)
     {
         _rb.velocity = Vector2.zero;
 
         transform.localPosition = _startPoint;
 
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(time);
 
         float guess = Random.Range(0, 1f);
         guess *= _player == GameLogic.Player.P1 ? p1VelocityDir.Length : p2VelocityDir.Length;

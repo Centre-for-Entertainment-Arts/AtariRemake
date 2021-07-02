@@ -23,7 +23,7 @@ public class TetrominoBit : MonoBehaviour
     {
         if (other.gameObject.GetComponent<Ball>())
         {
-            parent.ReduceTetronimoCount();
+            if (parent != null) parent.ReduceTetronimoCount();
             Destroy(gameObject);
         }
     }
