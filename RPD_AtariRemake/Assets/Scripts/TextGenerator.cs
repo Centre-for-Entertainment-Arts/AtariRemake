@@ -26,11 +26,18 @@ public class TextGenerator : MonoBehaviour
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.
     /// </summary>
-    void Start()
+    void Awake()
     {
         _source = GetComponent<AudioSource>();
         _source.clip = _textSFX;
         _text.text = "";
+
+    }
+    /// <summary>
+    /// This function is called when the object becomes enabled and active.
+    /// </summary>
+    void OnEnable()
+    {
         StartCoroutine(PlayText());
     }
 
