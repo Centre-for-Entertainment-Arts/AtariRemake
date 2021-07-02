@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
         UpdateLiveCount();
 
         if (p1Life <= 0 || p2Life <= 0)
-            GameOver();
+            GameOver(0);
     }
 
     public void DisableBallBreakerAssets()
@@ -204,20 +204,38 @@ public class GameManager : MonoBehaviour
         _P2BallBreakerUI.GetComponentInChildren<TMP_Text>().text = "LIVES: " + p2Life.ToString();
     }
 
-    public void GameOver()
+    public void GameOver(int condition, GameLogic.Player player = GameLogic.Player.P1)
     {
-        Time.timeScale = 0;
-        if (p1Life > 0)
-        {
-            PlayerPrefs.SetInt("Winner", 1);
-            Debug.Log("SAVED PLAYER 1");
-        }
-        else
-        {
-            PlayerPrefs.SetInt("Winner", 2);
-            Debug.Log("SAVED PLAYER 2");
-        }
+        //0 -  by losing health
+        //1 - by player moving to other side
 
+        Time.timeScale = 0;
+        if (condition == 0)
+        {
+            if (p1Life > 0)
+            {
+                PlayerPrefs.SetInt("Winner", 1);
+                Debug.Log("SAVED PLAYER 1");
+            }
+            else
+            {
+                PlayerPrefs.SetInt("Winner", 2);
+                Debug.Log("SAVED PLAYER 2");
+            }
+        }
+        else if (condition == 1)
+        {
+            if (player == GameLogic.Player.P1)
+            {
+                PlayerPrefs.SetInt("Winner", 1);
+                Debug.Log("SAVED PLAYER 1");
+            }
+            else
+            {
+                PlayerPrefs.SetInt("Winner", 2);
+                Debug.Log("SAVED PLAYER 2");
+            }
+        }
         SceneManager.LoadScene("WinScreen");
     }
 
@@ -227,7 +245,7 @@ public class GameManager : MonoBehaviour
         {
             levelMusic.clip = BBMusic;
             levelMusic.Play();
-            levelMusic.volume = 0.4f;
+            levelMusic.volume = 0.2f;
             levelMusic.loop = true;
         }
     }
