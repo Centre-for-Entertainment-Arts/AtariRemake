@@ -10,6 +10,12 @@ public class Bounds : MonoBehaviour
 
     private GameManager _manager;
 
+    [SerializeField]
+    private GameObject p1FlashFX;
+
+    [SerializeField]
+    private GameObject p2FlashFX;
+
     bool doneOnce;
 
     /// <summary>
@@ -31,10 +37,16 @@ public class Bounds : MonoBehaviour
             _manager.ReduceHealth(_player);
             if (_player == GameLogic.Player.P1)
                 if (GameManager.p1Life > 0)
+                {
+                    p1FlashFX.SetActive(true);
                     other.gameObject.GetComponent<Ball>().Respawn();
+                }
             if (_player == GameLogic.Player.P2)
                 if (GameManager.p2Life > 0)
+                {
+                    p2FlashFX.SetActive(true);
                     other.gameObject.GetComponent<Ball>().Respawn();
+                }
         }
         else
         {

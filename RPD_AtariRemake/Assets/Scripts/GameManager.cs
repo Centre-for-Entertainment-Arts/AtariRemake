@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 
+    public bool mainGame = true;
     [SerializeField]
     private GameObject _P1BallBreakerAssets;
 
@@ -46,14 +48,48 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject _GameOverUI;
 
+
+
+    [Header("WINNER")]
+
+    public GameObject p1WinnerAssets;
+    public GameObject p2WinnerAssets;
+
     // Start is called before the first frame update
     void Start()
     {
-        DisableBallBreakerAssets();
-        UpdateBlockCount();
-        UpdateLiveCount();
         Time.timeScale = 1;
-        _GameOverUI.SetActive(false);
+
+        if (mainGame == false)
+        {
+            int winner = PlayerPrefs.GetInt("Winner", 0);
+            switch (winner)
+            {
+                case 1:
+                    p1WinnerAssets.SetActive(true);
+                    Debug.Log("PLAYER 1 WINNER");
+                    break;
+                case 2:
+                    p2WinnerAssets.SetActive(true);
+                    Debug.Log("PLAYER 2 WINNER");
+                    break;
+                case 0:
+                    Debug.Log("ERROR NOBODY WON");
+                    break;
+
+                default:
+                    p1WinnerAssets.SetActive(true);
+                    break;
+            }
+        }
+        else
+        {
+
+            DisableBallBreakerAssets();
+            UpdateBlockCount();
+            UpdateLiveCount();
+            _GameOverUI.SetActive(false);
+        }
     }
 
     public void ReduceHealth(GameLogic.Player player)
@@ -156,16 +192,19 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Time.timeScale = 0;
-        Debug.Log("GAME OVER");
-        _GameOverUI.SetActive(true);
-
-        string endgameText = "DEFAULT";
         if (p1Life > 0)
-            endgameText = "PLAYER 1 WINS";
+        {
+            PlayerPrefs.SetInt("Winner", 1);
+            Debug.Log("SAVED PLAYER 1");
+        }
         else
         {
-            endgameText = "PLAYER 2 WINS";
+            PlayerPrefs.SetInt("Winner", 2);
+            Debug.Log("SAVED PLAYER 2");
         }
-        GameOverText.text = endgameText;
+
+        SceneManager.LoadScene("WinScreen");
     }
+
+
 }
