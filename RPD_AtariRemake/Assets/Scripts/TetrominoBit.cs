@@ -5,6 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class TetrominoBit : MonoBehaviour
 {
+    tetrisBlock parent;
+
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
+    void Awake()
+    {
+        parent = gameObject.GetComponentInParent<tetrisBlock>();
+    }
     /// <summary>
     /// Sent when an incoming collider makes contact with this object's
     /// collider (2D physics only).
@@ -14,6 +23,7 @@ public class TetrominoBit : MonoBehaviour
     {
         if (other.gameObject.GetComponent<Ball>())
         {
+            parent.ReduceTetronimoCount();
             Destroy(gameObject);
         }
     }

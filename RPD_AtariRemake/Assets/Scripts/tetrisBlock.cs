@@ -36,6 +36,8 @@ public class tetrisBlock : MonoBehaviour
     private AudioClip _rotateBlockSFX;
     private AudioSource _source;
 
+    public int TetronimoCount = 4;
+
 
     /// <summary>
     /// This function is called when the object becomes enabled and active.
@@ -275,6 +277,18 @@ public class tetrisBlock : MonoBehaviour
         foreach (var item in _childblocks)
         {
             item.GetComponent<SpriteRenderer>().color = chosenColor;
+        }
+    }
+
+    public void ReduceTetronimoCount()
+    {
+        TetronimoCount--;
+        if (TetronimoCount <= 0)
+        {
+            if (_finished == false)
+            {
+                _spawner.SpawnSingleBlock();
+            }
         }
     }
 

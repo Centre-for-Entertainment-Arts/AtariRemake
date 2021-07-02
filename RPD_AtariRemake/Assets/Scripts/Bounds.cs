@@ -50,7 +50,7 @@ public class Bounds : MonoBehaviour
         }
         else
         {
-            _manager.GameOver();
+            _manager.GameOver(1, other.gameObject.GetComponent<Ball>()._player); //Other ball came into our side
         }
         doneOnce = false;
     }
