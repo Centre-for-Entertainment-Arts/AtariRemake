@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
+        ResetValues();
 
         if (mainGame == false)
         {
@@ -90,6 +91,14 @@ public class GameManager : MonoBehaviour
             UpdateLiveCount();
             _GameOverUI.SetActive(false);
         }
+    }
+
+    private static void ResetValues()
+    {
+        player1BlockCount = 11;
+        player2BlockCount = 11;
+        p1Life = 2;
+        p2Life = 2;
     }
 
     public void ReduceHealth(GameLogic.Player player)
