@@ -14,7 +14,7 @@ public class SpawnBlock : MonoBehaviour
 
     void Start()
     {
-        SpawnSingleBlock();
+        //   SpawnSingleBlock();
     }
 
     public void SpawnSingleBlock()
