@@ -16,6 +16,8 @@ public class Ball : MonoBehaviour
     private Vector2[] p1VelocityDir = { new Vector2(-1, 1), new Vector2(-1, -1) };
     private Vector2[] p2VelocityDir = { new Vector2(1, 1), new Vector2(1, -1) };
 
+    private AudioSource _source;
+
     /// <summary>
     /// This function is called when the object becomes enabled and active.
     /// </summary>
@@ -23,6 +25,7 @@ public class Ball : MonoBehaviour
     {
         _startPoint = gameObject.transform.localPosition;
         _rb = GetComponent<Rigidbody2D>();
+        _source = GetComponent<AudioSource>();
     }
 
     /// <summary>
@@ -52,5 +55,15 @@ public class Ball : MonoBehaviour
 
         var chosenDir = _player == GameLogic.Player.P1 ? p1VelocityDir[Mathf.FloorToInt(guess)] : p2VelocityDir[Mathf.FloorToInt(guess)];
         _rb.velocity = chosenDir.normalized * _speed;
+    }
+
+    /// <summary>
+    /// Sent when an incoming collider makes contact with this object's
+    /// collider (2D physics only).
+    /// </summary>
+    /// <param name="other">The Collision2D data associated with this collision.</param>
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        _source.Play();
     }
 }

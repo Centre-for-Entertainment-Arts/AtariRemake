@@ -29,6 +29,14 @@ public class tetrisBlock : MonoBehaviour
     public GameManager Manager;
     public bool lastBlock;
 
+    //AUDIO
+    [SerializeField]
+    private AudioClip _registerBlockSFX;
+    [SerializeField]
+    private AudioClip _rotateBlockSFX;
+    private AudioSource _source;
+
+
     /// <summary>
     /// This function is called when the object becomes enabled and active.
     /// </summary>
@@ -36,6 +44,7 @@ public class tetrisBlock : MonoBehaviour
     {
         _spawner = GameObject.FindObjectOfType<SpawnBlock>();
         _gamelogic = GameObject.FindObjectOfType<GameLogic>();
+        _source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -57,8 +66,11 @@ public class tetrisBlock : MonoBehaviour
                 if (!ValidMove())
                 {
                     _rotationPoint.eulerAngles -= new Vector3(0, 0, 90);
+                    return;
                 }
+                _source.PlayOneShot(_rotateBlockSFX);
             }
+
         }
         else
         if (_player == GameLogic.Player.P2)
@@ -69,7 +81,9 @@ public class tetrisBlock : MonoBehaviour
                 if (!ValidMove())
                 {
                     _rotationPoint.eulerAngles -= new Vector3(0, 0, 90);
+                    return;
                 }
+                _source.PlayOneShot(_rotateBlockSFX);
             }
         }
     }
@@ -78,6 +92,7 @@ public class tetrisBlock : MonoBehaviour
     {
         _finished = true;
         Manager.ReduceBlockCount(_player);
+        _source.PlayOneShot(_registerBlockSFX);
 
         int roundedX = Mathf.FloorToInt(gameObject.transform.position.x);
         int roundedY = Mathf.FloorToInt(gameObject.transform.position.y);
