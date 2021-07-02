@@ -10,12 +10,33 @@ public class StartSequence : MonoBehaviour
 
     private AudioSource _source;
 
+    [SerializeField]
+    private GameObject _startScreen;
+
+    int TutorialPlayed;
+
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
     void Awake()
     {
+
         _source = GetComponent<AudioSource>();
+        TutorialPlayed = PlayerPrefs.GetInt("TutorialPlayed", 0);
+        StartScreen();
+    }
+
+    public void StartScreen()
+    {
+        if (TutorialPlayed == 0) //If tutorial has not been played. play it now
+        {
+            _startScreen.SetActive(true);
+            PlayerPrefs.SetInt("TutorialPlayed", 1);
+        }
+        else
+        {
+            CountDown();
+        }
     }
 
     public void CountDown()
