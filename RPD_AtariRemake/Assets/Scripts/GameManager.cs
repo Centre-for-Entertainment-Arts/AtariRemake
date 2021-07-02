@@ -64,7 +64,6 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         ResetValues();
-        levelMusic.clip = TetrisMusic;
         if (mainGame == false)
         {
             int winner = PlayerPrefs.GetInt("Winner", 0);
@@ -90,6 +89,7 @@ public class GameManager : MonoBehaviour
         else
         {
 
+            levelMusic.clip = TetrisMusic;
             DisableBallBreakerAssets();
             UpdateBlockCount();
             UpdateLiveCount();
