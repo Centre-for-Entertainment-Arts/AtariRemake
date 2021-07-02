@@ -567,13 +567,14 @@ GameObject:
   - component: {fileID: 183850999}
   - component: {fileID: 183851001}
   - component: {fileID: 183851000}
+  - component: {fileID: 183851002}
   m_Layer: 0
   m_Name: P1Lose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &183850999
 Transform:
   m_ObjectHideFlags: 0
@@ -658,6 +659,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &183851002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183850998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 706e9ee65c108e3499e39075913282e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seconds: 0.4
 --- !u!1 &206595449
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,6 +1533,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: 0
+  p1FlashFX: {fileID: 183850998}
+  p2FlashFX: {fileID: 2115496017}
 --- !u!1 &790572027
 GameObject:
   m_ObjectHideFlags: 0
@@ -2496,6 +2512,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: 1
+  p1FlashFX: {fileID: 183850998}
+  p2FlashFX: {fileID: 2115496017}
 --- !u!61 &1068869534
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2867,6 +2885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624ad2caf6e0fb74d963c22bf6dd48ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainGame: 1
   _P1BallBreakerAssets: {fileID: 495011003}
   _P2BallBreakerAssets: {fileID: 109897460}
   _TetrisAssets: {fileID: 790572027}
@@ -2876,6 +2895,8 @@ MonoBehaviour:
   _P2BallBreakerUI: {fileID: 684981012}
   GameOverText: {fileID: 966109930}
   _GameOverUI: {fileID: 936358595}
+  p1WinnerAssets: {fileID: 0}
+  p2WinnerAssets: {fileID: 0}
 --- !u!114 &1377060712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2888,7 +2909,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee468b6aef0c7148ad97e3a60b4eab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 1377060711}
 --- !u!1 &1385176028
 GameObject:
   m_ObjectHideFlags: 0
@@ -4679,13 +4699,14 @@ GameObject:
   - component: {fileID: 2115496018}
   - component: {fileID: 2115496020}
   - component: {fileID: 2115496019}
+  - component: {fileID: 2115496021}
   m_Layer: 0
   m_Name: P2Lose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2115496018
 Transform:
   m_ObjectHideFlags: 0
@@ -4770,6 +4791,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2115496021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115496017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 706e9ee65c108e3499e39075913282e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seconds: 0.4
 --- !u!1001 &2805414002060795503
 PrefabInstance:
   m_ObjectHideFlags: 0
