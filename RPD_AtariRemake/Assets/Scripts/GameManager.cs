@@ -49,18 +49,22 @@ public class GameManager : MonoBehaviour
     private GameObject _GameOverUI;
 
 
-
     [Header("WINNER")]
 
     public GameObject p1WinnerAssets;
     public GameObject p2WinnerAssets;
+
+    [Header("AUDIO")]
+    public AudioSource levelMusic;
+    public AudioClip TetrisMusic;
+    public AudioClip BBMusic;
 
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1;
         ResetValues();
-
+        levelMusic.clip = TetrisMusic;
         if (mainGame == false)
         {
             int winner = PlayerPrefs.GetInt("Winner", 0);
@@ -132,6 +136,7 @@ public class GameManager : MonoBehaviour
 
     public void SetupBallBreakerP1()
     {
+        SwitchMusicToBB();
         p1IsBall = true;
         _P1BallBreakerAssets.SetActive(true);
         _P1TetrisUI.SetActive(false);
@@ -141,6 +146,7 @@ public class GameManager : MonoBehaviour
 
     public void SetupBallBreakerP2()
     {
+        SwitchMusicToBB();
         p2IsBall = true;
         _P2BallBreakerAssets.SetActive(true);
         _P2TetrisUI.SetActive(false);
@@ -213,6 +219,17 @@ public class GameManager : MonoBehaviour
         }
 
         SceneManager.LoadScene("WinScreen");
+    }
+
+    public void SwitchMusicToBB()
+    {
+        if (levelMusic.clip != BBMusic)
+        {
+            levelMusic.clip = BBMusic;
+            levelMusic.Play();
+            levelMusic.volume = 0.4f;
+            levelMusic.loop = true;
+        }
     }
 
 
