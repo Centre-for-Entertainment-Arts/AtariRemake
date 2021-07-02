@@ -926,8 +926,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4283453695
+  m_fontColor: {r: 1, g: 0.3150943, b: 0.3150943, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1529,7 +1529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.48892844, g: 0.7924528, b: 0.5047844, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1911,8 +1911,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4284243199
+  m_fontColor: {r: 1, g: 0.3622641, b: 0.3622641, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3752,8 +3752,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294903040
-  m_fontColor: {r: 0, g: 0.02050805, b: 1, a: 1}
+    rgba: 4294931826
+  m_fontColor: {r: 0.44716978, g: 0.4580097, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4247,8 +4247,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43913a11d2fa5ab45a21edd67800c0dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Message: BUILD WALLS IN FRONT OF THE ENEMY TO PREVENT THEIR BALL FROM COMING INTO
-    YOUR TERRITORY. PRESS ANY KEY TO CONTINUE
+  Message: BUILD A WALL AGAINST ENEMY. USE YOUR PAD TO DEFLECT BALLS!. PRESS ANY
+    KEY TO CONTINUE
   _text: {fileID: 1614183885}
   _textSFX: {fileID: 8300000, guid: 0edd400cdcd4801478139e80e59bca1b, type: 3}
   _parent: {fileID: 768082613}
@@ -4377,8 +4377,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294941733
+  m_fontColor: {r: 0.14509803, g: 0.613501, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5390,8 +5390,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278191727
-  m_fontColor: {r: 0.4339623, g: 0.025443252, b: 0, a: 1}
+    rgba: 4285035007
+  m_fontColor: {r: 1, g: 0.44135645, b: 0.40943396, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
