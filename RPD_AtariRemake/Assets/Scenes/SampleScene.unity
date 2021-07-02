@@ -2202,7 +2202,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0edd400cdcd4801478139e80e59bca1b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ec4495c4745147f44ac3793cd4d804d5, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -4520,7 +4520,7 @@ MonoBehaviour:
   Message: BUILD A WALL AGAINST YOUR ENEMY. USE YOUR PAD TO DEFLECT BALLS! PRESS
     ANY KEY TO CONTINUE
   _text: {fileID: 1614183885}
-  _textSFX: {fileID: 8300000, guid: 0edd400cdcd4801478139e80e59bca1b, type: 3}
+  _textSFX: {fileID: 8300000, guid: ec4495c4745147f44ac3793cd4d804d5, type: 3}
   _parent: {fileID: 768082613}
 --- !u!82 &1614183884
 AudioSource:

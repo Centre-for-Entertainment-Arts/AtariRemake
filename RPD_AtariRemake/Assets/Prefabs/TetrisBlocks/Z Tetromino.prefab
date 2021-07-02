@@ -658,8 +658,9 @@ MonoBehaviour:
   _player: 0
   Manager: {fileID: 0}
   lastBlock: 0
-  _registerBlockSFX: {fileID: 8300000, guid: ec4495c4745147f44ac3793cd4d804d5, type: 3}
-  _rotateBlockSFX: {fileID: 8300000, guid: c9539d5b7e5775a4f9ff5693fa9d4639, type: 3}
+  _registerBlockSFX: {fileID: 8300000, guid: c9539d5b7e5775a4f9ff5693fa9d4639, type: 3}
+  _rotateBlockSFX: {fileID: 8300000, guid: 4bf1b5b0567a8fd479de1b941693392e, type: 3}
+  TetronimoCount: 4
 --- !u!82 &4826812963157213275
 AudioSource:
   m_ObjectHideFlags: 0
